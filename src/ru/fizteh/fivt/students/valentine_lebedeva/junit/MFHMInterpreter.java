@@ -47,7 +47,7 @@ public class MFHMInterpreter extends Interpreter {
     @Override
     public void exit(Object object) throws IOException {
         Command exit = new ExitCommand(1);
-        String[] tmp = { "exit" };
+        String[] tmp = {"exit"};
         exit.execute(tmp, object);
     }
 }
