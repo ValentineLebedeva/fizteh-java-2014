@@ -10,7 +10,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import ru.fizteh.fivt.students.valentine_lebedeva.junit.utils.Rm;
+import ru.fizteh.fivt.students.valentine_lebedeva.junit.utils.RemoveFile;
 
 public class ProviderTest {
     private final File testDir = new File(System.getProperty("test.dir"), "providerTest");
@@ -176,7 +176,7 @@ public class ProviderTest {
 
     @After
     public void afterTest() throws IOException {
-        Rm.rmRec(testDir.getAbsolutePath());
+        RemoveFile.rmRec(testDir.getAbsolutePath());
         testDir.mkdir();
     }
 

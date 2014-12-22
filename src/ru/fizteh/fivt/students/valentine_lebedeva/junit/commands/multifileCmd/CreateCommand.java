@@ -13,8 +13,8 @@ public final class CreateCommand extends Command {
     @Override
     public void execute(final String[] args, Object tables) throws IOException {
         checkArgs(args);
-        if (((Provider) tables).createTable(args[1]) == null) {
-            System.out.println(args[1] + " exists");
+        if (((Provider) tables).createTable(args[0]) == null) {
+            System.out.println(args[0] + " exists");
         } else {
             System.out.println("created");
         }

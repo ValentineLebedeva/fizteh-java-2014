@@ -15,7 +15,7 @@ public final class ShowCommand extends Command {
     @Override
     public void execute(String[] args, Object tables) throws IOException {
         checkArgs(args);
-        if (!args[1].equals("tables")) {
+        if (!args[0].equals("tables")) {
             throw new IllegalArgumentException("Wrong arguments");
         }
         Map<String, Integer> listTables = ((Provider) tables).showTables();

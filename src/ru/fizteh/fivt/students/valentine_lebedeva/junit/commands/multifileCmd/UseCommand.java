@@ -14,15 +14,15 @@ public final class UseCommand extends Command {
     @Override
     public void execute(String[] args, Object tables) throws IOException {
         checkArgs(args);
-        if (((Provider) tables).containsKey(args[1])) {
+        if (((Provider) tables).containsKey(args[0])) {
             int changes;
-            if ((changes = ((MultiFileTable) ((Provider) tables).getTable(args[1])).getChanges()) != 0) {
+            if ((changes = ((MultiFileTable) ((Provider) tables).getTable(args[0])).getChanges()) != 0) {
                 throw new IllegalStateException(changes + " unsaved changes");
             }
-            ((Provider) tables).setWorkTable(args[1]);
-            System.out.println("using " + args[1]);
+            ((Provider) tables).setWorkTable(args[0]);
+            System.out.println("using " + args[0]);
         } else {
-            System.out.println(args[1] + " not exists");
+            System.out.println(args[0] + " not exists");
         }
     }
 }

@@ -5,7 +5,7 @@ import java.io.IOException;
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.commands.Command;
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.tables.Provider;
 
-public class CommitCommand extends Command {
+public final class CommitCommand extends Command {
     public CommitCommand(int number) {
         super(number);
     }

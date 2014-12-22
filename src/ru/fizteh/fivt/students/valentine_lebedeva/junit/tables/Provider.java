@@ -11,13 +11,13 @@ import java.util.Map;
 import ru.fizteh.fivt.storage.strings.Table;
 import ru.fizteh.fivt.storage.strings.TableProvider;
 
-public class Provider implements TableProvider {
+public final class Provider implements TableProvider {
     private String root;
     private String workTable;
     private static final int MAX_NUMBER_OF_TABLES = 16;
     private Map<String, MultiFileTable> tables;
 
-    public Provider(String path) throws IOException {
+    public Provider(final String path) throws IOException {
         tables = new HashMap<>();
         File directory = new File(path);
         if (!directory.exists()) {
@@ -38,16 +38,16 @@ public class Provider implements TableProvider {
     }
 
     @Override
-    public Table getTable(String name) {
+    public Table getTable(final String name) {
         return tables.get(name);
     }
 
-    public boolean containsKey(String name) {
+    public boolean containsKey(final String name) {
         return tables.containsKey(name);
     }
 
     @Override
-    public Table createTable(String name) {
+    public Table createTable(final String name) {
         try {
             if (!tables.isEmpty() && tables.size() == MAX_NUMBER_OF_TABLES) {
                 throw new IllegalArgumentException("Too many tables");
@@ -72,7 +72,7 @@ public class Provider implements TableProvider {
     }
 
     @Override
-    public void removeTable(String name) {
+    public void removeTable(final String name) {
         try {
             if (!tables.containsKey(name)) {
                 throw new IllegalStateException(name + " is not exists");
@@ -95,7 +95,7 @@ public class Provider implements TableProvider {
         }
     }
 
-    public void setWorkTable(String name) {
+    public void setWorkTable(final String name) {
         workTable = name;
     }
 
@@ -108,11 +108,8 @@ public class Provider implements TableProvider {
     }
 
     public int size() {
-        if (!tables.isEmpty()) {
-            return tables.size();
-        } else {
-            return 0;
-        }
+        return tables.size();
+
     }
 
     public Map<String, Integer> showTables() {

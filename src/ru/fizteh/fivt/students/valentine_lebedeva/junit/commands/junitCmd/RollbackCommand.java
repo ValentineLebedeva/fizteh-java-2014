@@ -5,7 +5,7 @@ import java.io.IOException;
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.commands.Command;
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.tables.Provider;
 
-public class RollbackCommand extends Command {
+public final class RollbackCommand extends Command {
     public RollbackCommand(int number) {
         super(number);
     }

@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import ru.fizteh.fivt.students.valentine_lebedeva.junit.utils.Rm;
+import ru.fizteh.fivt.students.valentine_lebedeva.junit.utils.RemoveFile;
 
 public class MultiFileTableTest {
     private File tableDir = new File(System.getProperty("test.dir"), "multiFileTableTest");
@@ -17,7 +17,7 @@ public class MultiFileTableTest {
     @Before
     public void beforeTest() throws IOException {
         if (tableDir.exists() && tableDir.list().length != 0) {
-            Rm.rmRec(tableDir.getAbsolutePath());
+            RemoveFile.rmRec(tableDir.getAbsolutePath());
         }
         tableDir.mkdir();
     }

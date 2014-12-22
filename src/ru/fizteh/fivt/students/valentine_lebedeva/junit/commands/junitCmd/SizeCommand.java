@@ -5,7 +5,7 @@ import java.io.IOException;
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.commands.Command;
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.tables.Provider;
 
-public class SizeCommand extends Command {
+public final class SizeCommand extends Command {
     public SizeCommand(int number) {
         super(number);
     }

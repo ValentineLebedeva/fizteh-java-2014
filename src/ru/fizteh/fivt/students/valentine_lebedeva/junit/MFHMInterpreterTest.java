@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.interpreter.StopInterpretationException;
-import ru.fizteh.fivt.students.valentine_lebedeva.junit.utils.Rm;
+import ru.fizteh.fivt.students.valentine_lebedeva.junit.utils.RemoveFile;
 
 public class MFHMInterpreterTest {
     private MFHMInterpreter interpreter = new MFHMInterpreter();
@@ -17,7 +17,7 @@ public class MFHMInterpreterTest {
     public void beforeTest() throws IOException {
         File providerDir = new File(System.getProperty("test.dir"), "providerTest");
         if (providerDir.exists()) {
-            Rm.rmRec(providerDir.getAbsolutePath());
+            RemoveFile.rmRec(providerDir.getAbsolutePath());
         }
         providerDir.mkdir();
     }

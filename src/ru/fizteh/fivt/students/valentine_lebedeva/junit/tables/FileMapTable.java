@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import ru.fizteh.fivt.students.valentine_lebedeva.junit.utils.Rm;
+import ru.fizteh.fivt.students.valentine_lebedeva.junit.utils.RemoveFile;
 
 public final class FileMapTable extends ATable {
     private RandomAccessFile dbFile;
@@ -85,6 +85,6 @@ public final class FileMapTable extends ATable {
 
     @Override
     public void delete() throws IOException {
-        Rm.rmNorm(name);
+        RemoveFile.rmNorm(name);
     }
 }

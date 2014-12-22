@@ -1,10 +1,7 @@
 package ru.fizteh.fivt.students.valentine_lebedeva.junit;
 
-import java.io.IOException;
-
 import ru.fizteh.fivt.storage.strings.TableProvider;
 import ru.fizteh.fivt.storage.strings.TableProviderFactory;
-import ru.fizteh.fivt.students.valentine_lebedeva.junit.commands.Command;
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.commands.ExitCommand;
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.commands.filemapCmd.GetCommand;
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.commands.filemapCmd.ListCommand;
@@ -20,21 +17,21 @@ import ru.fizteh.fivt.students.valentine_lebedeva.junit.commands.multifileCmd.Us
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.interpreter.Interpreter;
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.tables.ProviderFactory;
 
-public class MFHMInterpreter extends Interpreter {
+public final class MFHMInterpreter extends Interpreter {
     public MFHMInterpreter() {
         super();
-        commands.put("create", new CreateCommand(2));
-        commands.put("drop", new DropCommand(2));
-        commands.put("use", new UseCommand(2));
-        commands.put("show", new ShowCommand(2));
-        commands.put("list", new ListCommand(1));
-        commands.put("put", new PutCommand(3));
-        commands.put("get", new GetCommand(2));
-        commands.put("remove", new RemoveCommand(2));
-        commands.put("exit", new ExitCommand(1));
-        commands.put("size", new SizeCommand(1));
-        commands.put("commit", new CommitCommand(1));
-        commands.put("rollback", new RollbackCommand(1));
+        commands.put("create", new CreateCommand(1));
+        commands.put("drop", new DropCommand(1));
+        commands.put("use", new UseCommand(1));
+        commands.put("show", new ShowCommand(1));
+        commands.put("list", new ListCommand(0));
+        commands.put("put", new PutCommand(2));
+        commands.put("get", new GetCommand(1));
+        commands.put("remove", new RemoveCommand(1));
+        commands.put("exit", new ExitCommand(0));
+        commands.put("size", new SizeCommand(0));
+        commands.put("commit", new CommitCommand(0));
+        commands.put("rollback", new RollbackCommand(0));
     }
 
     @Override
@@ -42,12 +39,5 @@ public class MFHMInterpreter extends Interpreter {
         TableProviderFactory newTables = new ProviderFactory();
         TableProvider tables = newTables.create(System.getProperty("fizteh.db.dir"));
         return tables;
-    }
-
-    @Override
-    public void exit(Object object) throws IOException {
-        Command exit = new ExitCommand(1);
-        String[] tmp = { "exit" };
-        exit.execute(tmp, object);
     }
 }

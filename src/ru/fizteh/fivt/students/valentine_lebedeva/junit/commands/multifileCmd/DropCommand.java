@@ -13,7 +13,7 @@ public final class DropCommand extends Command {
     @Override
     public void execute(final String[] args, Object tables) throws IOException {
         checkArgs(args);
-        ((Provider) tables).removeTable(args[1]);
+        ((Provider) tables).removeTable(args[0]);
         System.out.println("dropped");
     }
 }

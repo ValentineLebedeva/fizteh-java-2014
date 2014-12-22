@@ -1,6 +1,6 @@
 package ru.fizteh.fivt.students.valentine_lebedeva.junit.interpreter;
 
-import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -16,7 +16,7 @@ public abstract class Interpreter {
         commands = new HashMap<>();
     }
 
-    public void interactive() throws Exception {
+    public final void interactive() throws Exception {
         try (Scanner input = new Scanner(System.in)) {
             String cmd;
             String[] cmdargs;
@@ -32,7 +32,7 @@ public abstract class Interpreter {
         }
     }
 
-    public void batch(final String[] args) throws Exception {
+    public final void batch(final String[] args) throws Exception {
         String cmd;
         String[] cmdargs;
         StringBuilder builder = new StringBuilder();
@@ -49,11 +49,11 @@ public abstract class Interpreter {
         }
     }
 
-    public void interprete(final String cmdArgs, final Boolean isBatchMode, Object object) throws Exception {
+    public final void interprete(final String cmdArgs, final Boolean isBatchMode, Object object) throws Exception {
         try {
             String[] parseArgs = cmdArgs.split(" ");
             if (commands.containsKey(parseArgs[0])) {
-                commands.get(parseArgs[0]).execute(parseArgs, object);
+                commands.get(parseArgs[0]).execute(Arrays.copyOfRange(parseArgs, 1, parseArgs.length), object);
             } else {
                 throw new IllegalArgumentException("Wrong command");
             }
@@ -68,6 +68,4 @@ public abstract class Interpreter {
     }
 
     public abstract Object getObject() throws Exception;
-
-    public abstract void exit(Object object) throws IOException;
 }

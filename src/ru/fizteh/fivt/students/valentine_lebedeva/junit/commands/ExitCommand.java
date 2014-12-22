@@ -5,7 +5,7 @@ import java.io.IOException;
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.interpreter.StopInterpretationException;
 import ru.fizteh.fivt.students.valentine_lebedeva.junit.tables.Provider;
 
-public class ExitCommand extends Command {
+public final class ExitCommand extends Command {
     public ExitCommand(int number) {
         super(number);
     }

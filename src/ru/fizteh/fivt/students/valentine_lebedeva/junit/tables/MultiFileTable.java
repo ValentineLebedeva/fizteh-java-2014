@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import ru.fizteh.fivt.students.valentine_lebedeva.junit.utils.Rm;
+import ru.fizteh.fivt.students.valentine_lebedeva.junit.utils.RemoveFile;
 
 public final class MultiFileTable extends ATable {
     private static final int MAX_NUMBER_OF_DIRECTORIES = 16;
@@ -38,10 +38,6 @@ public final class MultiFileTable extends ATable {
             }
         }
         return base;
-    }
-
-    public File getDirectory() {
-        return directory;
     }
 
     @Override
@@ -108,9 +104,9 @@ public final class MultiFileTable extends ATable {
     @Override
     public void delete() throws IOException {
         if (directory.list().length == 0) {
-            Rm.rmNorm(directory.getAbsolutePath());
+            RemoveFile.rmNorm(directory.getAbsolutePath());
         } else {
-            Rm.rmRec(directory.getAbsolutePath());
+            RemoveFile.rmRec(directory.getAbsolutePath());
         }
     }
 }

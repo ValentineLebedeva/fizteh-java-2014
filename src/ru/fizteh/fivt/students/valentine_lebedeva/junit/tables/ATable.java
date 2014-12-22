@@ -27,7 +27,7 @@ public abstract class ATable implements Table {
     public abstract int commit();
 
     @Override
-    public int rollback() {
+    public final int rollback() {
         int changes = getChanges();
         workBase = new HashMap<>(oldBase);
         return changes;
@@ -35,36 +35,32 @@ public abstract class ATable implements Table {
 
     public abstract void close() throws IOException;
 
-    public Map<String, String> getWorkBase() {
-        return workBase;
-    }
-
     @Override
-    public String put(final String key, final String value) {
+    public final String put(final String key, final String value) {
         String res = workBase.get(key);
         workBase.put(key, value);
         return res;
     }
 
     @Override
-    public String remove(final String key) {
+    public final String remove(final String key) {
         String res = get(key);
         workBase.remove(key);
         return res;
     }
 
     @Override
-    public String get(final String key) {
+    public final String get(final String key) {
         return workBase.get(key);
     }
 
     @Override
-    public int size() {
+    public final int size() {
         return workBase.size();
     }
 
     @Override
-    public List<String> list() {
+    public final List<String> list() {
         List<String> res = new ArrayList<>();
         for (String key : workBase.keySet()) {
             res.add(key);
@@ -73,11 +69,11 @@ public abstract class ATable implements Table {
     }
 
     @Override
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public int getChanges() {
+    public final int getChanges() {
         if (workBase == null || workBase.equals(oldBase)) {
             return 0;
         }
@@ -95,11 +91,11 @@ public abstract class ATable implements Table {
         return changes;
     }
 
-    public void setBase(Map<String, String> newBase) {
+    public final void setBase(final Map<String, String> newBase) {
         workBase = new HashMap<String, String>(newBase);
     }
 
-    public boolean containsKey(String key) {
+    public final boolean containsKey(final String key) {
         return workBase.containsKey(key);
     }
 }
