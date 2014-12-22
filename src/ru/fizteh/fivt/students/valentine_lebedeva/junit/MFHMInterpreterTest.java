@@ -24,19 +24,19 @@ public class MFHMInterpreterTest {
 
     @Test(expected = StopInterpretationException.class)
     public void testBatchModeWrongCommand() throws Exception {
-        String[] args = { "wrong" };
+        String[] args = {"wrong"};
         interpreter.batch(args);
     }
 
     @Test(expected = StopInterpretationException.class)
     public void testBatchWrongNumberOfArguments() throws Exception {
-        String[] args = { "create bla bla" };
+        String[] args = {"create bla bla"};
         interpreter.batch(args);
     }
 
     @Test(expected = StopInterpretationException.class)
     public void testBatchMode() throws Exception {
-        String[] args = { "create tab; use tab; put key value; size; get key; commit; remove key; rollback; drop" };
+        String[] args = {"create tab; use tab; put key value; size; get key; commit; remove key; rollback; drop"};
         interpreter.batch(args);
     }
 
