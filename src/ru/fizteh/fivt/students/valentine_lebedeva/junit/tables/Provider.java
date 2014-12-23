@@ -88,11 +88,7 @@ public final class Provider implements TableProvider {
     }
 
     public boolean checkWorkTable() {
-        if (workTable == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(workTable == null);
     }
 
     public void setWorkTable(final String name) {
